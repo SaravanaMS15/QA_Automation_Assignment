@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.13.0 on win32)" generated="2024-12-01T15:54:50.738049" rpa="false" schemaversion="5">
+<suite id="s1" name="Api Tests" source="C:\Users\pc\Downloads\qa-automation-assignment\tests\api_tests.robot">
+<test id="s1-t1" name="Generate Auth Token - Invalid User" line="6">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-12-01T15:54:52.720986" level="INFO">Creating Session using : alias=auth, url=https://landmark.taqtics.co/api-docs/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>auth</arg>
+<arg>${API_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-12-01T15:54:52.720292" elapsed="0.006889"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-12-01T15:54:52.756896" level="FAIL">MissingSchema: Invalid URL '/generateAuthToken': No scheme supplied. Perhaps you meant https:///generateAuthToken?</msg>
+<var>${response}</var>
+<arg>/generateAuthToken</arg>
+<arg>json={"email": "${USERNAME}", "password": "${PASSWORD}"}</arg>
+<doc>Sends a POST request.</doc>
+<status status="FAIL" start="2024-12-01T15:54:52.729370" elapsed="0.062043">MissingSchema: Invalid URL '/generateAuthToken': No scheme supplied. Perhaps you meant https:///generateAuthToken?</status>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2024-12-01T15:54:52.793581" elapsed="0.000111"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-12-01T15:54:52.794280" elapsed="0.000053"/>
+</kw>
+<doc>Verify that non-admin user credentials return a 401 error</doc>
+<status status="FAIL" start="2024-12-01T15:54:52.717145" elapsed="0.078272">MissingSchema: Invalid URL '/generateAuthToken': No scheme supplied. Perhaps you meant https:///generateAuthToken?</status>
+</test>
+<status status="FAIL" start="2024-12-01T15:54:50.745439" elapsed="2.058521"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Api Tests">Api Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
